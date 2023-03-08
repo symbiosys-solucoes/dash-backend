@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,9 +8,9 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  upDateTimeAt DateTime @updatedAt
 
   email String @unique
   hash  String
@@ -21,22 +18,95 @@ model User {
   firstName String?
   lastName  String?
 
-  bookmarks Bookmark[]
-
   @@map("users")
 }
 
-model Bookmark {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt
+model CronosConsultaMovimento {
+  id         Int      @id @default(autoincrement())
+  insertedAt DateTime @default(now())
+  company_id BigInt
 
-  title       String
-  description String?
-  link        String
+  invoicing_date                  DateTime?
+  nf_reject_motive                String?
+  id_company_erp                  String
+  person_type                     String?
+  company_name                    String?
+  stock_id                        String?
+  stock_name                      String?
+  invoice_id                      Int       @unique
+  cancelled_date                  DateTime?
+  additional_expenses             Decimal?
+  cancelled_user_id               String?
+  invoice_number                  String?
+  invoice_serie                   String?
+  invoice_date                    DateTime?
+  invoice_type                    String?
+  fiscal_code                     String?
+  cancelled_motive                String?
+  customer_code                   String?
+  customer_cpf_cnpj               String?
+  customer_name                   String?
+  customer_full_name              String?
+  customer_district               String?
+  customer_fax_number             String?
+  invoice_status                  String?
+  invoice_total                   Decimal?
+  invoice_discount_percentual     Decimal?
+  invoice_salesman_code           String?
+  invoice_saalesman_name          String?
+  invoice_supervisor_name         String?
+  invoice_separator_code          String?
+  invoice_conffering_code         String?
+  blocked_message                 String?
+  payment_condition_code          String?
+  date                            DateTime?
+  invoice_createdAt               DateTime?
+  invoice_user_id                 String?
+  comercial_block_message         String?
+  financial_block_message         String?
+  invoice_obs                     String?
+  pdv                             String?
+  icms_base                       Decimal?
+  printed                         Boolean?
+  payment_condition_description   String?
+  origin_invoice_id               BigInt?
+  insurence_value                 Decimal?
+  freight_value                   Decimal?
+  invoice_print_date              DateTime?
+  invoice_delivery_priority       String?
+  invoice_aux_number              String?
+  invoice_separation_date_begin   DateTime?
+  invoice_autorization_date       DateTime?
+  invoice_separation_date_end     DateTime?
+  invoice_separation_status       String?
+  nfe_key                         String?
+  invoice_delivery_date           DateTime?
+  separator_name                  String?
+  conffering_name                 String?
+  comercial_block                 Boolean?
+  financial_block                 Boolean?
+  invoice_tracking                String?
+  expedition_id                   BigInt?
+  comercial_authorization_date    DateTime?
+  financial_authorization_date    DateTime?
+  expedition_description          String?
+  financial_authorization_user_id String?
+  comercial_authorization_user_id String?
+  cancelled_total                 Decimal?
+  discount_percentage_block       Decimal?
+  auto_cancelled                  Boolean?
+  custom_print                    Boolean?
+  invoice_destination             String?
+  invoice_origin                  String?
+  invoice_finalization_date       DateTime?
+  nfe_status                      String?
+  customer_category               String?
+  city                            String?
+  region                          String?
+  invoice_standard_value          Decimal?
+  invoice_increase_value          Decimal?
+  invoice_discount_total          Decimal?
+  invoice_liquid_value            Decimal?
 
-  userId Int
-  user   User @relation(fields: [userId], references: [id])
-
-  @@map("bookmarks")
+  @@map("cronos_consulta_movimento")
 }
